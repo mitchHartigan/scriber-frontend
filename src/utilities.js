@@ -1,7 +1,7 @@
 export function login (userEmail, userPassword) { 
   console.log('attempting login!');
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:9000/login', {
+    fetch('http://165.22.58.28:9000/login', {
       method: 'POST',
       body: JSON.stringify({ email: userEmail, password: userPassword}),
       headers: {
@@ -19,7 +19,7 @@ export function login (userEmail, userPassword) {
 
  export function register (userFirstName, userLastName, userEmail, userPassword) {
   return new Promise((resolve, reject)=> {
-    fetch('http://localhost:9000/register', {
+    fetch('http://165.22.58.28:9000/register', {
       method: 'POST',
       body: JSON.stringify({
         firstName: userFirstName,
@@ -45,7 +45,7 @@ export function login (userEmail, userPassword) {
  export function fetchNotes (token) {
    return new Promise((resolve, reject)=> {
     console.log('attempting to fetchNotes!')
-    fetch('http://localhost:9000/fetchNotes', {
+    fetch('http://165.22.58.28:9000/fetchNotes', {
       method: 'POST',
       body: JSON.stringify({
         token: token,
@@ -63,7 +63,7 @@ export function login (userEmail, userPassword) {
 
  export function postNotes (token, notes) {
   return new Promise((resolve, reject)=> {
-   fetch('http://localhost:9000/postNotes', {
+   fetch('http://165.22.58.28:9000/postNotes', {
      method: 'POST',
      body: JSON.stringify({
        token: token,
