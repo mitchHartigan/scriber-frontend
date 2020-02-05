@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+/* Background image retrieved from http://www.travelaroundusa.com/kings-canyon-national-park-ca.html */
+
+.newNoteInput {
+  border-color: black;
+  border-radius: 5px;
+  width: 40vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14pt;
+  height: 20px;
+  background-image: none;
+}
+
+body {
+  background-image: url('background.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.postItStatic {
+  text-align: center;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-color:#2374AB;
+}
+
+.postItEditing {
+  text-align: center;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-color:#2374AB;
+  border: solid;
+  border-width: 3px;
+  border-color: #2B84D1;
+}
+
+.postItText {
+  width: 100%;
+  color: white;
+  font-family: Roboto;
+  font-size: 16pt;
+  font-weight: 400;
+  font-style: italic;
+  display: inline-flex;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.postItStatic:hover { 
+  cursor: grab;
+}
+
+.postItStatic:hover .editButton {
+  display: inline-block;
+  transition: opacity 1s ease-out;
+}
+
+.postItEditing:hover {
+  cursor: grab;
+}
+
+.postItEditing:hover .editButton {
+  display: inline-block;
+}
+
+.newNoteDiv {
+  padding: 30px;
+  text-align: center;
+  top: 95%;
+}
+
+.newNoteButton {
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  outline: none;
+  border: none;
+  font-family: Roboto;
+  color:white;
+  font-size: 34pt;
+  font-weight: 100;
+  background-color:#2374AB;
+  cursor: pointer;
+}
+
+.postItWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+
+.postItTextArea {
+  width: 80%;
+  height: 80%;
+  padding-top: 35px;
+  padding-left: 0;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  border-color: none;
+  font-family: arial;
+  font-size: 11pt;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  outline: none;
+}
+
+.editButton {
+  position: relative;
+  display: none;
+  top: -30px;
+  animation: fadeInButton 0.2s ease-out;
+  border-radius: 10%;
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 22px;
+  color: #2374AB;
+  background-color: white;
+}
+
+.deleteButton {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  top: -30px;
+  animation: fadeInButton 0.2s ease-out;
+  border-radius: 10%;
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 22px;
+  color: white;
+  background-color:#FF8484;
+}
+
+.saveButton {
+  position: relative;
+  display: inline-block;
+  top: -30px;
+  margin-right: 5px;
+  animation: fadeInButton 0.2s ease-out;
+  border-radius: 10%;
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 22px;
+  color: #2374AB;
+  background-color: white;
+}
+
+@keyframes fadeInButton {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
