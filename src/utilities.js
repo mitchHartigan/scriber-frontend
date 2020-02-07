@@ -1,7 +1,7 @@
 export function login (userEmail, userPassword) { 
   console.log('attempting login!');
   return new Promise((resolve, reject) => {
-    fetch('http://165.22.58.28:9000/login', {
+    fetch('https://lit-wildwood-71440.herokuapp.com/login', {
       method: 'POST',
       body: JSON.stringify({ email: userEmail, password: userPassword}),
       headers: {
