@@ -19,7 +19,7 @@ export function login (userEmail, userPassword) {
 
  export function register (userFirstName, userLastName, userEmail, userPassword) {
   return new Promise((resolve, reject)=> {
-    fetch('http://165.22.58.28:9000/register', {
+    fetch('https://lit-wildwood-71440.herokuapp.com/register', {
       method: 'POST',
       body: JSON.stringify({
         firstName: userFirstName,
@@ -45,7 +45,7 @@ export function login (userEmail, userPassword) {
  export function fetchNotes (token) {
    return new Promise((resolve, reject)=> {
     console.log('attempting to fetchNotes!')
-    fetch('http://165.22.58.28:9000/fetchNotes', {
+    fetch('https://lit-wildwood-71440.herokuapp.com/fetchNotes', {
       method: 'POST',
       body: JSON.stringify({
         token: token,
@@ -63,7 +63,7 @@ export function login (userEmail, userPassword) {
 
  export function postNotes (token, notes) {
   return new Promise((resolve, reject)=> {
-   fetch('http://165.22.58.28:9000/postNotes', {
+   fetch('https://lit-wildwood-71440.herokuapp.com/postNotes', {
      method: 'POST',
      body: JSON.stringify({
        token: token,
