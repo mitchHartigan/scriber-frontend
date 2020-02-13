@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+
 import StickyNote from "./StickyNote.js";
-import AddNoteBtn from './AddNoteBtn';
-import Header from './Header';
+import { Header } from './molecules';
 import uuidv4 from 'uuid/v4';
-import {fetchNotes, postNotes} from '../utilities';
+import { fetchNotes, postNotes } from '../utilities';
 
 class Board extends Component {
   constructor(props) {

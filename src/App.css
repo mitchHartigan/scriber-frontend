@@ -113,7 +113,7 @@ body {
   background-color: transparent;
   border: none;
   resize: none;
-  border-color: none;
+  border-color: transparent;
   font-family: arial;
   font-size: 11pt;
   font-weight: 300;

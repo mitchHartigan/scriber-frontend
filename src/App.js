@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board.js'
-import Homepage from './components/Homepage';
+import Homepage from './components/UserAuth/Homepage';
 
 class App extends Component {
   constructor(props){
