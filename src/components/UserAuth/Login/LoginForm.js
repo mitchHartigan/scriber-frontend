@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FormButton, FormAlertText, FormInput } from '../molecules';
+import { FormButton, FormAlertText, FormInput, LoadingSpinner } from '../molecules';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -92,6 +92,8 @@ class LoginForm extends Component {
         <FormAlertText isActive={this.props.authenticationError}
           message={'Username or password is incorrect.'}
         ></FormAlertText>
+
+        <LoadingSpinner waitingForResponse={this.props.waitingForResponse} />
 
         <FormButton isHighlighted={true} handleClick={this.submitForm}>Sign In</FormButton>
         <p style={loginRedirectText}>Not signed up yet?

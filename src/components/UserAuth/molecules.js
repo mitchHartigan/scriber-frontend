@@ -71,6 +71,16 @@ export function VisibilityBtn (props) {
    );
 }
 
+export function LoadingSpinner(props) {
+  if(props.waitingForResponse) {
+    return (
+      <div className="ldsRing__container">
+        <div className="ldsRing"><div></div><div></div><div></div><div></div></div>
+      </div>
+    )
+  }
+  return null;
+}
 
 
 const FormAlertTextActive = {

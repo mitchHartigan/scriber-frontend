@@ -13,6 +13,7 @@ class Login extends Component {
       authenticated: false,
       authenticationError: false,
       authenticationErrorMsg: '',
+      attemptingSignIn: false,
      }
   }
 
@@ -21,16 +22,18 @@ class Login extends Component {
   };
 
   handleLogin = (email, password) => {
-    login(email, password)
+    this.setState({attemptingSignIn: true}, ()=> {
+      login(email, password)
       .then(async (res)=> {
         if (res.status === 200) {
           const token = await res.json();
           localStorage.setItem('token', JSON.stringify(token));
           this.props.authenticateUser();
         } else {
-          this.setState({ authenticationError: true })
+          this.setState({ authenticationError: true, attemptingSignIn: false })
         }
       })
+    })
   }
 
   render() {
@@ -47,6 +50,7 @@ class Login extends Component {
               authenticationError={this.state.authenticationError}
               authenticationErrorMsg={this.state.authenticationErrorMsg}
               handleRegisterRedirect={this.props.handleRegisterRedirect}
+              waitingForResponse={this.state.attemptingSignIn}
             />
           </div>
         </div>

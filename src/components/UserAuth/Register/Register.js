@@ -12,6 +12,7 @@ class Register extends Component {
       backButtonClicked: false,
       authenticated: false,
       authenticationError: false,
+      attemptingRegister: false,
     }
   }
 
@@ -20,20 +21,21 @@ class Register extends Component {
   }
 
   handleRegister = (firstName, lastName, email, password ) => {
-    register(firstName, lastName, email, password)
+    this.setState({attemptingRegister: true}, ()=> {
+      register(firstName, lastName, email, password)
       .then(async (res)=> {
         if(res.status === 200) {
           const token = await res.json();
           localStorage.setItem('token', JSON.stringify(token));
           this.props.authenticateUser();
         } else {
-          this.setState({authenticationError: true})
+          this.setState({authenticationError: true, attemptingRegister: false})
         }
       })
+    })
   }
 
   render() {
-
     return (
       <div style={registrationForm__container}>
         <NavButton handleClick={this.props.handleGreetingRedirect} icon={backArrow}></NavButton>
@@ -46,6 +48,7 @@ class Register extends Component {
             handleSubmit={this.handleRegister}
             handleLoginRedirect={this.props.handleLoginRedirect}
             authenticationError={this.state.authenticationError}
+            waitingForResponse={this.state.attemptingRegister}
           />
         </div>
       </div>

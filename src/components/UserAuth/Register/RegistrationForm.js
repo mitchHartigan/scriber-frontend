@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { FormButton, FormAlertText, FormInput, VisibilityBtn } from '../molecules';
+import { FormButton, FormAlertText, FormInput, VisibilityBtn, LoadingSpinner } from '../molecules';
 import eye from '../../../images/eye.png';
 
 export default class RegistrationForm extends Component {
@@ -123,6 +123,8 @@ export default class RegistrationForm extends Component {
           message={"Looks like you've already got an account. Try signing in instead."}
         ></FormAlertText>
         
+        <LoadingSpinner waitingForResponse={this.props.waitingForResponse} />
+
         <FormButton isHighlighted={true} onClick={this.submitForm}>Create New Account</FormButton>
         
         <p style={loginRedirectText}>Already signed up?
