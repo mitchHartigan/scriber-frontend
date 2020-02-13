@@ -48,7 +48,7 @@ class Homepage extends Component {
   render() {
     if(this.state.redirectToRegister){ 
       return (
-        <div style={HomepageElem}>
+        <div style={homepage}>
           <Register
             handleGreetingRedirect={this.handleGreetingRedirect}
             handleLoginRedirect={this.handleLoginRedirect}
@@ -60,7 +60,7 @@ class Homepage extends Component {
 
      if(this.state.redirectToLogin){
       return ( 
-        <div style={HomepageElem}>
+        <div style={homepage}>
           <Login
             handleGreetingRedirect={this.handleGreetingRedirect}
             handleRegisterRedirect={this.handleRegisterRedirect}
@@ -72,7 +72,7 @@ class Homepage extends Component {
     
     if (this.state.redirectToGreeting)
     return (
-      <div style={HomepageElem}>
+      <div style={homepage}>
         <Greeting
          handleRegisterRedirect={this.handleRegisterRedirect}
          handleLoginRedirect={this.handleLoginRedirect}
@@ -82,7 +82,7 @@ class Homepage extends Component {
   }
 }
 
-const HomepageElem = { 
+const homepage = { 
   display: 'flex',
   width: '100%',
   height: '100%',

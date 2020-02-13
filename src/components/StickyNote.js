@@ -95,11 +95,11 @@ export class StickyNote extends Component {
         defaultPosition={{ x: this.props.xPos, y: this.props.yPos }}
         bounds="body"
       >
-        <div className="postItStatic">
-          <div className="postItWrapper">
-            <p className="postItText">{this.state.displayTextVal}</p>
+        <div className="postIt">
+          <div className="postIt__Container">
+            <p className="postIt__Text">{this.state.displayTextVal}</p>
           </div>
-          <button onClick={this.toggleMode} className="editButton">
+          <button onClick={this.toggleMode} className="postIt__editButton">
             Edit
           </button>
         </div>
@@ -115,23 +115,23 @@ export class StickyNote extends Component {
     return (
       <Draggable onDrag={this.handleDrag} cancel="textarea" bounds="body">
         <div 
-          className="postItEditing"
+          className="postIt postIt--Editing"
           onKeyPress={this.handleKeyPress}
         >
           <textarea
-            className="postItTextArea"
+            className="postIt__TextArea"
             defaultValue={this.state.textVal}
             onChange={this.updateChildState}
           />
           <button
             onClick={() => this.toggleMode(this.state.textVal)}
-            className="saveButton"
+            className="postIt__saveButton"
           >
             Save
           </button>
           <button
             onClick={() => this.handleDelete(this.state.index)}
-            className="deleteButton"
+            className="postIt__deleteButton"
           >
             Delete
           </button>

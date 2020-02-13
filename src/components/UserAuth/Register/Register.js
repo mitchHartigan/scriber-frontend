@@ -35,11 +35,11 @@ class Register extends Component {
   render() {
 
     return (
-      <div style={registerScreenElem}>
+      <div style={registrationForm__container}>
         <NavButton handleClick={this.props.handleGreetingRedirect} icon={backArrow}></NavButton>
         
         <div style={registrationForm}>
-          <p style={signUpHeaderText}>
+          <p style={registrationForm__signUpText}>
             Sign Up For Free
           </p>
           <RegistrationForm
@@ -53,22 +53,6 @@ class Register extends Component {
   }
 }
 
-const signUpHeaderText = {
-  fontFamily: 'Merriweather',
-  fontSize: '22pt',
-  marginBottom: '30px',
-  marginTop: '10px',
-  paddingTop: '15px',
-  textAlign: 'center',
-}
-
-const registerScreenElem = { 
-  backgroundColor: 'white',
-  width: '600px',
-  borderRadius: '5px',
-  boxShadow: '4px 5px 7px #333333',
-}
-
 const registrationForm = {
   marginTop: '10px',
   backgroundColor: 'white',
@@ -76,6 +60,22 @@ const registrationForm = {
   marginRight: '10px',
   borderRadius: '10px',
   paddingBottom: '20px',
+}
+
+const registrationForm__container = { 
+  backgroundColor: 'white',
+  width: '600px',
+  borderRadius: '5px',
+  boxShadow: '4px 5px 7px #333333',
+}
+
+const registrationForm__signUpText = {
+  fontFamily: 'Merriweather',
+  fontSize: '22pt',
+  marginBottom: '30px',
+  marginTop: '10px',
+  paddingTop: '15px',
+  textAlign: 'center',
 }
  
 export default Register;

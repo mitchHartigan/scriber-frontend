@@ -109,10 +109,10 @@ class Board extends Component {
   render() {
     return (
       <div>
-        <div style={signOutBtnContainer}>
+        <div style={signOutBtn__container}>
          <Header addNoteBtn={()=> this.createNote()} handleSignOut={this.props.handleSignOut} />
         </div>
-        <div style={boardContainer}>
+        <div style={board}>
           <div>{this.state.notes.map(this.eachNote)}</div>
         </div>
       </div>
@@ -121,11 +121,11 @@ class Board extends Component {
 }
 
 
-const signOutBtnContainer={
+const signOutBtn__container={
   alignSelf: 'flex-start',
 }
 
-const boardContainer = {
+const board = {
   display: 'flex',
 }
 
