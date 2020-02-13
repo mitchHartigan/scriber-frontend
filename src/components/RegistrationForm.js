@@ -28,8 +28,6 @@ export default class RegistrationForm extends Component {
 
     this.inputChecker(email, password)
       .then((inputValid)=> {
-        console.log('inputValid returned')
-        console.log('inputValid value: ', inputValid)
         if(inputValid) {
           this.props.handleSubmit(firstName, lastName, email, password);
         }
@@ -50,15 +48,12 @@ export default class RegistrationForm extends Component {
   }
 
   inputChecker = (email, password) => {
-    console.log('inputChecker fired');
     return new Promise((resolve) => {
       if (!email) {
-        console.log('email is empty!')
         this.setState({emailIsEmpty:true}, ()=> resolve(false));
       }
 
       else if (!password) {
-        console.log('password is empty!')
         this.setState({
           emailIsEmpty: false,
           passwordIsEmpty: true

@@ -1,5 +1,4 @@
 export function login (userEmail, userPassword) { 
-  console.log('attempting login!');
   return new Promise((resolve, reject) => {
     fetch('https://lit-wildwood-71440.herokuapp.com/login', {
       method: 'POST',
@@ -32,7 +31,6 @@ export function login (userEmail, userPassword) {
       }
     })
     .then((res) => {
-      console.log('res from register: ', res);
       resolve(res);
     })
     .catch((err) => {
@@ -44,7 +42,6 @@ export function login (userEmail, userPassword) {
 
  export function fetchNotes (token) {
    return new Promise((resolve, reject)=> {
-    console.log('attempting to fetchNotes!')
     fetch('https://lit-wildwood-71440.herokuapp.com/fetchNotes', {
       method: 'POST',
       body: JSON.stringify({

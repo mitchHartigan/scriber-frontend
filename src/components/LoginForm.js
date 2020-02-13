@@ -16,12 +16,10 @@ class LoginForm extends Component {
   inputChecker = (email, password) => {
     return new Promise((resolve) => {
       if (!email) {
-        console.log('email returning false!');
         this.setState({emailIsEmpty:true}, ()=> resolve(false));
       }
 
       else if (!password) {
-        console.log('password is empty!')
         this.setState({
           emailIsEmpty: false,
           passwordIsEmpty: true
@@ -29,7 +27,6 @@ class LoginForm extends Component {
       }
       
       else if (password && password.length < 4) {
-        console.log('password is incorrect!')
         this.setState({
           passwordIsEmpty: false,
           passwordIsIncorrect: true
@@ -51,7 +48,7 @@ class LoginForm extends Component {
   submitForm = (evt) => {
     evt.preventDefault();
 
-    console.log('submitForm fired');
+
 
     let form = document.getElementById('loginForm');
     let email = form.elements['email'].value;
@@ -59,7 +56,6 @@ class LoginForm extends Component {
 
     this.inputChecker(email, password)
     .then((inputValid)=> {
-      console.log('inputValid', inputValid)
        if (inputValid) {
          this.props.handleSubmit(email, password);
        }

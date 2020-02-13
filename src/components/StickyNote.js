@@ -59,7 +59,6 @@ export class StickyNote extends Component {
   }
 
   handleLongText = (text) => {
-    console.log('handleLongText fired!')
     if (text && text.length >= 50) {
       let shortenedText = text.substring(0, 50) + '...';
       this.setState({displayTextVal: shortenedText});

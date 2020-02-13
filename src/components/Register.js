@@ -15,12 +15,10 @@ class Register extends Component {
   }
 
   backButton = () => {
-    console.log('back button clicked!');
     this.setState({backButtonClicked: true});
   }
 
   handleRegister = (firstName, lastName, email, password ) => {
-    console.log('handleRegister fired!');
     register(firstName, lastName, email, password)
       .then(async (res)=> {
         if(res.status === 200) {
@@ -28,7 +26,6 @@ class Register extends Component {
           localStorage.setItem('token', JSON.stringify(token));
           this.props.authenticateUser();
         } else {
-          console.log('user already exists, from handleRegister')
           this.setState({authenticationError: true})
         }
       })

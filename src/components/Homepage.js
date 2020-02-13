@@ -29,13 +29,11 @@ class Homepage extends Component {
   }
 
   handleLoginRedirect = () => {
-    console.log('handleLoginRedirect called!');
     this.setState({
       redirectToRegister: false,
       redirectToLogin: true,
       redirectToGreeting: false,
     }, ()=> {
-      console.log('state after loginRedirect: ', this.state);
     })
   }
 

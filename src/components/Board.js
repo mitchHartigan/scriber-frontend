@@ -63,19 +63,15 @@ class Board extends Component {
   // Method to be passed to child element, to allow notes[] text
   // value to be updated from the child.
   updateParentText = (index, text) => {
-    console.log('updateParentText fired!');
-    console.log('text passed into updateParentText: ', text);
     let currentState = this.state.notes;
     currentState[index].text = text;
     this.setState({notes: currentState}, ()=> {
       postNotes(this.state.token, currentState);
 
     });
-    console.log(currentState);
   };
 
   handleDragStop = () => {
-    console.log('handleDragstop fired!');
     postNotes(this.state.token, this.state.notes);
   }
 
