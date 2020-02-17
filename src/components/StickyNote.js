@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Draggable from "react-draggable";
 
-export class StickyNote extends Component {
+export default class StickyNote extends Component {
   // This is the Sticky Note component, which will render one sticky note when called.
   // The component expects a text value input as a child, and an index value (representing
   // it's correlating value in the parent array of post it elements) passed in as a prop.
@@ -11,20 +11,22 @@ export class StickyNote extends Component {
       isDragging: false,
       isEditing: false,
       textVal: this.props.children,
-      displayTextVal: '',
+      displayTextVal: "",
       deltaPosition: {
         x: this.props.xPos,
-        y: this.props.yPos,
+        y: this.props.yPos
       },
-      index: this.props.index,
+      index: this.props.index
     };
   }
 
+  // Checks if the text passed into the component is too long to render out, and shortens it
+  // with a ... if so.
   componentWillMount() {
     this.handleLongText(this.props.children);
   }
 
-  // Method that updates the x and y positions of the StickyNote element in both the state of 
+  // Method that updates the x and y positions of the StickyNote element in both the state of
   // the individual child StickyNote element, and in the notes[] array of the Board element,
   // each time the note is moved.
   handleDrag = (e, ui) => {
@@ -52,20 +54,23 @@ export class StickyNote extends Component {
     this.setState({ textVal: event.target.value });
   };
 
-  handleKeyPress = (event) => {
-    if (event.key === 'Enter') { 
+  // Saves the text typed into a note when the user presses the enter button.
+  handleKeyPress = event => {
+    if (event.key === "Enter") {
       this.toggleMode();
     }
-  }
+  };
 
-  handleLongText = (text) => {
+  // Handles text that is too long to be displayed inside the sticky note. Called in
+  // componentWillMount().
+  handleLongText = text => {
     if (text && text.length >= 50) {
-      let shortenedText = text.substring(0, 50) + '...';
-      this.setState({displayTextVal: shortenedText});
+      let shortenedText = text.substring(0, 50) + "...";
+      this.setState({ displayTextVal: shortenedText });
     } else {
-      this.setState({displayTextVal: text})
+      this.setState({ displayTextVal: text });
     }
-  }
+  };
 
   // Toggles the state of the post it between edit mode and display mode. The
   // ! is used to make sure the state is always changed to the opposite of it's
@@ -81,9 +86,11 @@ export class StickyNote extends Component {
     this.handleLongText(this.state.textVal);
   };
 
+  // Passes the index of the selected sticky up to the parent, to be removed from
+  // the notes array.
   handleDelete = () => {
     this.props.deleteNote(this.props.index);
-  }
+  };
 
   // The 'display mode' for the post it, where the text cannot be edited. On button press, the
   // element will re-render into edit mode.
@@ -96,8 +103,8 @@ export class StickyNote extends Component {
         bounds="body"
       >
         <div className="postIt">
-          <div className="postIt__Container">
-            <p className="postIt__Text">{this.state.displayTextVal}</p>
+          <div className="postIt__container">
+            <p className="postIt__text">{this.state.displayTextVal}</p>
           </div>
           <button onClick={this.toggleMode} className="postIt__editButton">
             Edit
@@ -114,12 +121,12 @@ export class StickyNote extends Component {
   renderEditMode = () => {
     return (
       <Draggable onDrag={this.handleDrag} cancel="textarea" bounds="body">
-        <div 
-          className="postIt postIt--Editing"
+        <div
+          className="postIt postIt--editing"
           onKeyPress={this.handleKeyPress}
         >
           <textarea
-            className="postIt__TextArea"
+            className="postIt__textArea"
             defaultValue={this.state.textVal}
             onChange={this.updateChildState}
           />
@@ -150,6 +157,3 @@ export class StickyNote extends Component {
     }
   }
 }
-
-
-export default StickyNote;

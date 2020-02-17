@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { NavButton }   from '../molecules';
-import backArrow from '../../../images/backArrow.svg';
-import RegistrationForm from './RegistrationForm';
-import { register } from '../../../utilities';
+import { NavButton } from "../molecules";
+import backArrow from "../../../images/backArrow.svg";
+import RegistrationForm from "./RegistrationForm";
+import { register } from "../../../utilities";
 
 class Register extends Component {
   constructor(props) {
@@ -12,38 +12,41 @@ class Register extends Component {
       backButtonClicked: false,
       authenticated: false,
       authenticationError: false,
-      attemptingRegister: false,
-    }
+      attemptingRegister: false
+    };
   }
 
   backButton = () => {
-    this.setState({backButtonClicked: true});
-  }
+    this.setState({ backButtonClicked: true });
+  };
 
-  handleRegister = (firstName, lastName, email, password ) => {
-    this.setState({attemptingRegister: true}, ()=> {
-      register(firstName, lastName, email, password)
-      .then(async (res)=> {
-        if(res.status === 200) {
+  handleRegister = (firstName, lastName, email, password) => {
+    this.setState({ attemptingRegister: true }, () => {
+      register(firstName, lastName, email, password).then(async res => {
+        if (res.status === 200) {
           const token = await res.json();
-          localStorage.setItem('token', JSON.stringify(token));
+          localStorage.setItem("token", JSON.stringify(token));
           this.props.authenticateUser();
         } else {
-          this.setState({authenticationError: true, attemptingRegister: false})
+          this.setState({
+            authenticationError: true,
+            attemptingRegister: false
+          });
         }
-      })
-    })
-  }
+      });
+    });
+  };
 
   render() {
     return (
       <div style={registrationForm__container}>
-        <NavButton handleClick={this.props.handleGreetingRedirect} icon={backArrow}></NavButton>
-        
+        <NavButton
+          handleClick={this.props.handleGreetingRedirect}
+          icon={backArrow}
+        ></NavButton>
+
         <div style={registrationForm}>
-          <p style={registrationForm__signUpText}>
-            Sign Up For Free
-          </p>
+          <p style={registrationForm__signUpText}>Sign Up For Free</p>
           <RegistrationForm
             handleSubmit={this.handleRegister}
             handleLoginRedirect={this.props.handleLoginRedirect}
@@ -57,28 +60,28 @@ class Register extends Component {
 }
 
 const registrationForm = {
-  marginTop: '10px',
-  backgroundColor: 'white',
-  marginLeft: '10px',
-  marginRight: '10px',
-  borderRadius: '10px',
-  paddingBottom: '20px',
-}
+  marginTop: "10px",
+  backgroundColor: "white",
+  marginLeft: "10px",
+  marginRight: "10px",
+  borderRadius: "10px",
+  paddingBottom: "20px"
+};
 
-const registrationForm__container = { 
-  backgroundColor: 'white',
-  width: '600px',
-  borderRadius: '5px',
-  boxShadow: '4px 5px 7px #333333',
-}
+const registrationForm__container = {
+  backgroundColor: "white",
+  width: "600px",
+  borderRadius: "5px",
+  boxShadow: "4px 5px 7px #333333"
+};
 
 const registrationForm__signUpText = {
-  fontFamily: 'Merriweather',
-  fontSize: '22pt',
-  marginBottom: '30px',
-  marginTop: '10px',
-  paddingTop: '15px',
-  textAlign: 'center',
-}
- 
+  fontFamily: "Merriweather",
+  fontSize: "22pt",
+  marginBottom: "30px",
+  marginTop: "10px",
+  paddingTop: "15px",
+  textAlign: "center"
+};
+
 export default Register;

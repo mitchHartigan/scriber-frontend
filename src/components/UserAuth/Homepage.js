@@ -1,52 +1,49 @@
-import React, {Component} from 'react';
-import Greeting from './Greeting';
-import Login from './Login/Login';
-import Register from './Register/Register';
-
+import React, { Component } from "react";
+import Greeting from "./Greeting";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
 
 class Homepage extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       authenticated: false,
       redirectToRegister: false,
       redirectToLogin: false,
-      redirectToGreeting: true,
-    }
+      redirectToGreeting: true
+    };
   }
 
   authenticateUser = () => {
     this.props.authenticateUser();
-  }
-
+  };
 
   handleRegisterRedirect = () => {
     this.setState({
       redirectToRegister: true,
       redirectToLogin: false,
-      redirectToGreeting: false,
-    })
-  }
+      redirectToGreeting: false
+    });
+  };
 
   handleLoginRedirect = () => {
     this.setState({
       redirectToRegister: false,
       redirectToLogin: true,
-      redirectToGreeting: false,
-    }, ()=> {
-    })
-  }
+      redirectToGreeting: false
+    });
+  };
 
   handleGreetingRedirect = () => {
     this.setState({
       redirectToRegister: false,
       redirectToLogin: false,
-      redirectToGreeting: true,
-    })
-  }
+      redirectToGreeting: true
+    });
+  };
 
   render() {
-    if(this.state.redirectToRegister){ 
+    if (this.state.redirectToRegister) {
       return (
         <div style={homepage}>
           <Register
@@ -58,8 +55,8 @@ class Homepage extends Component {
       );
     }
 
-     if(this.state.redirectToLogin){
-      return ( 
+    if (this.state.redirectToLogin) {
+      return (
         <div style={homepage}>
           <Login
             handleGreetingRedirect={this.handleGreetingRedirect}
@@ -67,29 +64,29 @@ class Homepage extends Component {
             authenticateUser={this.authenticateUser}
           />
         </div>
-      )
+      );
     }
-    
+
     if (this.state.redirectToGreeting)
-    return (
-      <div style={homepage}>
-        <Greeting
-         handleRegisterRedirect={this.handleRegisterRedirect}
-         handleLoginRedirect={this.handleLoginRedirect}
-        />
-      </div>
-     );
+      return (
+        <div style={homepage}>
+          <Greeting
+            handleRegisterRedirect={this.handleRegisterRedirect}
+            handleLoginRedirect={this.handleLoginRedirect}
+          />
+        </div>
+      );
   }
 }
 
-const homepage = { 
-  display: 'flex',
-  width: '100%',
-  height: '100%',
-  paddingLeft: '30vw',
-  paddingRight: '30vw',
-  alignItems: 'center',
-  justifyContent: 'center',
-}
- 
+const homepage = {
+  display: "flex",
+  width: "100%",
+  height: "100%",
+  paddingLeft: "30vw",
+  paddingRight: "30vw",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
 export default Homepage;
